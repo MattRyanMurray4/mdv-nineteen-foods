@@ -1,0 +1,56 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>
+        <span *ngIf="currentAmericanFood.id; else elseCreate">{{
+          originalName
+        }}</span>
+        <ng-template #elseCreate> Create an AmericanFood </ng-template>
+      </h1>
+    </mat-card-title>
+  </mat-card-header>
+  <form
+    [formGroup]="form"
+    #formDirective="ngForm"
+    (ngSubmit)="saveForm(formDirective)"
+  >
+    <mat-card-content>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Name"
+          formControlName="name"
+          type="text"
+          name="name"
+        />
+        <mat-error *ngIf="form.get('name')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Calorie Content</mat-label>
+        <input
+          matInput
+          placeholder="Calorie Content"
+          formControlName="calContent"
+          type="text"
+          name="calContent"
+        />
+        <mat-error *ngIf="form.get('calContent')">Required Field</mat-error>
+      </mat-form-field>
+      <section>
+        <mat-checkbox formControlName="delicious">Delicious</mat-checkbox>
+      </section>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-button
+        type="submit"
+        [disabled]="form.invalid"
+        color="primary"
+      >
+        {{ currentAmericanFood.id ? 'Submit' : 'Update' }}
+      </button>
+      <button type="button" mat-button (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

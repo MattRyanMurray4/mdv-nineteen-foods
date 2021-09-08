@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="col-50" layout="row" layout-align="center center">
+    <food-american-list
+      [americanFoods]="americanFoods$ | async"
+      (selected)="selectAmerican($event)"
+      (deleted)="deleteAmerican($event)"
+    ></food-american-list>
+  </div>
+  <div class="col-50" layout="row" layout-align="center center">
+    <food-american-details
+      [form]="form"
+      [americanFood]="selectedAmericanFood$ | async"
+      (saved)="saveAmerican($event)"
+      (cancelled)="cancel()"
+    ></food-american-details>
+  </div>
+</div>

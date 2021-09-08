@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@food/api-interfaces';
 
 @Component({
   selector: 'food-root',
@@ -8,6 +6,9 @@ import { Message } from '@food/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  title = 'Food-Application';
+  links = [
+    { path: '/', icon: 'home', title: 'Login' },
+    { path: 'american', icon: 'view_list', title: 'Food-List' },
+  ];
 }
